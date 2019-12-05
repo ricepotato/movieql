@@ -1,32 +1,28 @@
-
-const people = [
-    {
-        name: "ricepotato",
-        age: 35,
-        gender: "male"
-    },
-    {
-        name: "h.e.",
-        age: 22,
-        gender: "female"
-    },
-    {
-        name: "g.h.",
-        age: 28,
-        gender: "female"
-    },
-    {
-        name: "yj",
-        age: 29,
-        gender: "female"
-    }
-]
+import { people, getById } from "./db";
 
 const resolvers = {
     Query: {
         people: () => people,
-        person: (id) => people[id]
+        person: (_, { id }) => getById(id)
     }
 };
 
-export default resolvers
+export default resolvers;
+
+
+/*
+person query
+
+query{
+  person(id:1){
+    name
+  }
+}
+
+people query
+query{
+  people{
+    name
+  }
+}
+*/
